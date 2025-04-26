@@ -10,6 +10,7 @@ history = []
 # ფუნქცია ისტორიის ფაილში შესანახად
 def save_history_to_file(history_list):
     with open("word_history.txt", "w", encoding="utf-8") as file:
+        file.write("სიტყვების ძიების ისტორია\n==================\n\n")
         for index, (word, desc) in enumerate(history_list, 1):
             file.write(f"{index}. Word: {word}\n")
             if isinstance(desc, list) and len(desc) > 1:
@@ -19,7 +20,7 @@ def save_history_to_file(history_list):
                 file.write(f"   1. {desc[0] if isinstance(desc, list) else desc}\n")
             file.write("\n")
             
-# მთავარი, სიტყვების ფუნქცია
+# ძირითადი ფუნქცია სიტყვისა და მისი მნიშვნელობების აღსაწერად
 def describe(word):
     if word.capitalize() in data:
         return data[word.capitalize()]
@@ -60,10 +61,10 @@ def describe(word):
     else:
         return "Can't find the word :/"
 
-# მთავარი ციკლი მენიუსთვის
+# მთავარი ციკლი მომხმარებლის ინტერაქციისთვის
 while True:
 
-    # მენიუს ჩვენება
+   # მენიუს ჩვენება სიტყვების აღწერის პროგრამისთვის
     print("\n=== Word Description Program ===")
     print("Enter a word to get its description or type 'exit' to quit.")
     word = input("Enter word: ").strip()
